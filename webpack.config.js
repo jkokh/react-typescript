@@ -4,16 +4,23 @@ const webpack = require('webpack');
 
 const configType = process.env.NODE_ENV;
 
-let distConfig = {
+var distConfig = {
 	entry: {
-		app: "./src/app/app.tsx",
-		vendor: ["jquery", "react", "react-dom"]
+		app: "./src/app/index.tsx",
+		vendor: ["react", "react-dom"]
 	},
 	resolve: {
-		extensions: ['.js', '.ts', '.jsx', '.tsx']
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
 	},
 	module: {
 		rules: [
+			{
+				test: /\.css/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader']
+				})
+			},
 			{
 				test: /\.sass/,
 				use: ExtractTextPlugin.extract({
@@ -24,6 +31,10 @@ let distConfig = {
 			{
 				test: /\.ts/,
 				use: 'ts-loader'
+			},
+			{
+				test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+				loader: 'url-loader?limit=100000'
 			}
 		]
 	},
@@ -46,16 +57,26 @@ let distConfig = {
 	]
 };
 
-let devConfig = {
+var devConfig = {
 	devtool: 'inline-source-map',
 	entry: [
-		'./src/app/app.tsx'
+		'./src/app/index.tsx'
 	],
 	resolve: {
-		extensions: ['.ts', '.js', '.json']
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
 	},
 	module: {
 		rules: [
+			{
+				test: /\.css/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader", options: {
+						sourceMap: true
+					}
+				}]
+			},
 			{
 				test: /\.sass/,
 				use: [{
@@ -82,6 +103,10 @@ let devConfig = {
 						}
 					}
 				}
+			},
+			{
+				test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+				loader: 'url-loader?limit=100000'
 			}
 		]
 	},

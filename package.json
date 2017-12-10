@@ -11,8 +11,8 @@
     "@types/react-dom": "^16.0.3",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
-    "jquery": "^3.2.1",
     "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -22,6 +22,7 @@
     "ts-loader": "^3.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
+    "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   },
@@ -29,5 +30,8 @@
     "dev": "NODE_ENV=dev && webpack-dev-server",
     "dist": "npm run clean-dist && NODE_ENV=dist webpack -p",
     "clean-dist": "rimraf ./dist/*"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7"
   }
 }

@@ -1,3 +1,30 @@
+@import "variables.sass"
+
+html
+  font-size: 15px
+
 body
-  background-color: steelblue
-  color: white
+  background-color: whitesmoke !important
+
+.btn
+  &:focus
+    outline: none !important
+
+//
+  button
+    font-size: 1rem
+
+  button
+    position: relative
+    border: none
+    outline: none
+    border-radius: $buttonBorderRadius
+    background-color: $buttonBgColor
+    color: white
+    padding: 0.5rem 1rem
+    cursor: pointer
+    &:hover
+      background-color: $buttonBgColorHover
+    &:active
+      top: 1px
+

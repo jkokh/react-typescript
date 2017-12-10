@@ -2,11 +2,10 @@
   "compilerOptions": {
     "jsx": "react",
     "declaration": false,
-    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": false,
     "inlineSources": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "target": "ES5"
   },
   "exclude": [
